@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { AdsrEnvelopeComponent } from './adsr-envelope.component'
+import { KeyboardComponent } from './keyboard.component'
 
 
 
 @NgModule({
   declarations: [
-    AdsrEnvelopeComponent
+    KeyboardComponent
   ],
   exports: [
-    AdsrEnvelopeComponent
+    KeyboardComponent
   ],
   imports: [
     CommonModule
   ]
 })
-export class AdsrEnvelopeModule { }
+export class KeyboardModule { }

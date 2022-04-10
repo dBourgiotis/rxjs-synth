@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { AdsrEnvelopeComponent } from './adsr-envelope.component'
+import { FilterComponent } from './filter.component'
 
 
 
 @NgModule({
   declarations: [
-    AdsrEnvelopeComponent
+    FilterComponent
   ],
   exports: [
-    AdsrEnvelopeComponent
+    FilterComponent
   ],
   imports: [
     CommonModule
   ]
 })
-export class AdsrEnvelopeModule { }
+export class FilterModule { }

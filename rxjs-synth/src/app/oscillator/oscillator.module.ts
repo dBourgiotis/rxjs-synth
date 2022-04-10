@@ -8,6 +8,9 @@ import { OscillatorComponent } from './oscillator.component';
   declarations: [
     OscillatorComponent
   ],
+  exports: [
+    OscillatorComponent
+  ],
   imports: [
     CommonModule
   ]

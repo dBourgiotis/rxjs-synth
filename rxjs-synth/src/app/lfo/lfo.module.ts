@@ -8,6 +8,9 @@ import { LfoComponent } from './lfo.component';
   declarations: [
     LfoComponent
   ],
+  exports: [
+    LfoComponent
+  ],
   imports: [
     CommonModule
   ]
