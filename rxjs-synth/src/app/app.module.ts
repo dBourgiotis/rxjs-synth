@@ -8,6 +8,7 @@ import { KeyboardModule } from './keyboard/keyboard.module'
 import { LfoModule } from './lfo/lfo.module'
 import { OscillatorModule } from './oscillator/oscillator.module';
 import { StoreModule } from '@ngrx/store';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { StoreModule } from '@ngrx/store';
     KeyboardModule,
     LfoModule,
     OscillatorModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

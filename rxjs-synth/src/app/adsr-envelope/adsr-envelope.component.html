@@ -1,1 +1,45 @@
-<p>adsr-envelope works!</p>
+<div class="synth-component">
+  <div class="synth-component__title">
+    ADSR Envelope
+  </div>
+  <div class="synth-component__subtitle">
+    set attack, decay, sustain, release
+  </div>
+
+  <div class="synth-component__content">
+    <div class="adsr-grid" *ngIf="adsr$ | async as env">
+      <div class="adsr-grid__item">
+        Attack
+        <mat-slider min="0" max="1" step="0.01"
+          [value]="env?.attack" vertical
+          (valueChange)="setAsdr(env, $event || 0, 'attack')">
+        </mat-slider>
+      </div>
+      <div class="adsr-grid__item">
+        Decay
+        <mat-slider min="0" max="1" step="0.01"
+          (valueChange)="setAsdr(env, $event || 0, 'decay')"
+          [value]="env?.decay" vertical>
+        </mat-slider>
+      </div>
+      <div class="adsr-grid__item">
+        Sustain
+        <mat-slider
+          min="0" max="1" step="0.01"
+          [value]="env?.sustain" vertical
+          (valueChange)="setAsdr(env, $event || 0, 'sustain')">
+        </mat-slider>
+      </div>
+      <div class="adsr-grid__item">
+        Release
+        <mat-slider
+          min="0" max="1" step="0.01"
+          [value]="env?.release" vertical
+          (valueChange)="setAsdr(env, $event || 0, 'release')">
+        </mat-slider>
+      </div>
+    </div>
+
+  </div>
+</div>
+
