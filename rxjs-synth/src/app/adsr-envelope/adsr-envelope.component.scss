@@ -1,4 +1,8 @@
 .adsr-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+
+  &__item {
+    display: grid;
+  }
 }

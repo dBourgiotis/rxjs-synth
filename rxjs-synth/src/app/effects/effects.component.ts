@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { StateService } from '../services/state/state.service';
 
 @Component({
@@ -9,6 +10,16 @@ import { StateService } from '../services/state/state.service';
 })
 export class EffectsComponent implements OnInit {
   dist$: Observable<number> = this.state.distortion
+  chorus$: Observable<number> = this.state.chorus
+  delay$: Observable<number> = this.state.delay
+  reverb$: Observable<number> = this.state.reverb
+
+  effects$ = combineLatest([
+    this.state.distortion,
+    this.state.reverb
+  ]).pipe(
+    map(([distortion, reverb]) => ({distortion, reverb}))
+  )
 
   constructor(
     private state: StateService,
@@ -19,6 +30,18 @@ export class EffectsComponent implements OnInit {
 
   setDistortion(value: number) {
     this.state.setDistortion(value)
+  }
+
+  setChorus(value: number) {
+    this.state.setChorus(value)
+  }
+
+  setDelay(value: number) {
+    this.state.setDelay(value)
+  }
+
+  setReverb(value: number) {
+    this.state.setReverb(value)
   }
 
 }

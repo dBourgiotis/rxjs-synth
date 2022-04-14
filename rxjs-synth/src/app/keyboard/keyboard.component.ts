@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core'
 import { combineLatest, Observable } from 'rxjs'
 import { first, map, tap } from 'rxjs/operators'
-import { AmplitudeEnvelope, AutoFilter, Distortion, Filter, LFO, OmniOscillator, Oscillator, Synth } from 'tone'
+import { AmplitudeEnvelope, AutoFilter, Chorus, Distortion, Filter, Freeverb, LFO, OmniOscillator, Oscillator, PingPongDelay, Synth } from 'tone'
 import { StateService } from '../services/state/state.service'
 import { SynthState } from '../services/state/synth-state.interface'
 import { KeyboardNotes } from './keyboard-notes'
@@ -17,11 +17,19 @@ export class KeyboardComponent implements OnInit {
     this.state.ampEnvelope,
     this.state.filter,
     this.state.lfo,
-    this.state.distortion
+    this.state.distortion,
+    this.state.chorus,
+    this.state.delay,
+    this.state.reverb,
   ]).pipe(
-    map(([osc_type, amp_env, filter, lfo, distortion]) => ({osc_type, amp_env, filter, lfo, distortion}))
+    map(([osc_type, amp_env, filter, lfo, distortion, chorus, delay, reverb]) => ({
+      osc_type, amp_env, filter, lfo, distortion, chorus, delay, reverb
+    }) as SynthState)
   )
-
+  synth = new Synth().toDestination()
+  dist = new Distortion().toDestination()
+  filter = new AutoFilter().toDestination().start()
+  reverb = new Freeverb().toDestination()
   octave = 4
 
   constructor(
@@ -37,17 +45,18 @@ export class KeyboardComponent implements OnInit {
     if (!note) return
     this.state$.pipe(
       tap(state => {
-        const synth = new Synth({
-          oscillator: {
-            type: state.osc_type
-          },
-          envelope: state.amp_env
-        }).toDestination()
-        const dist = new Distortion(state.distortion).toDestination()
-        const filter = new Filter(state.filter.frequency, state.filter.type).toDestination()
-        // const lfo = new LFO(state.lfo.frequency, state.lfo.min, state.lfo.max).connect(filter.frequency)
-        // lfo.start()
-        synth.connect(dist).connect(filter).triggerAttackRelease(`${note}${this.octave}`, "8n")
+        this.synth.oscillator.type = state.osc_type
+        this.synth.envelope.attack = state.amp_env.attack
+        this.synth.envelope.decay = state.amp_env.decay
+        this.synth.envelope.sustain = state.amp_env.sustain
+        this.synth.envelope.release = state.amp_env.release
+
+        this.dist.distortion = state.distortion
+        this.filter.baseFrequency = state.filter.frequency
+        this.reverb.roomSize.linearRampTo(state.reverb || 0, 0.01)
+
+
+        this.synth.triggerAttackRelease(`${note}${this.octave}`, "5n").chain(this.dist).chain(this.filter).chain(this.reverb)
       }),
       first(),
     ).subscribe()

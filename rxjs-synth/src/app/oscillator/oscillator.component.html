@@ -8,10 +8,10 @@
 
   <div class="synth-component__content">
     <div class="oscillators-cont">
-      <div class="oscillator" >
-        <button mat-button color="accent"
+      <div class="oscillator-flex" >
+        <button mat-stroked-button color="accent"
+        [class.active]="osc.active"
         (click)="setOsc(osc.type)"
-        color="primary"
         *ngFor="let osc of oscillators$ | async">
         {{osc.type}}</button>
 

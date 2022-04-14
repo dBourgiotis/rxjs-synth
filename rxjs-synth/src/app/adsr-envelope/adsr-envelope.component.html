@@ -10,14 +10,14 @@
     <div class="adsr-grid" *ngIf="adsr$ | async as env">
       <div class="adsr-grid__item">
         Attack
-        <mat-slider min="0" max="1" step="0.01"
+        <mat-slider min="0" max="0.9" step="0.01"
           [value]="env?.attack" vertical
           (valueChange)="setAsdr(env, $event || 0, 'attack')">
         </mat-slider>
       </div>
       <div class="adsr-grid__item">
         Decay
-        <mat-slider min="0" max="1" step="0.01"
+        <mat-slider min="0.1" max="0.9" step="0.01"
           (valueChange)="setAsdr(env, $event || 0, 'decay')"
           [value]="env?.decay" vertical>
         </mat-slider>
@@ -25,7 +25,7 @@
       <div class="adsr-grid__item">
         Sustain
         <mat-slider
-          min="0" max="1" step="0.01"
+          min="0.1" max="0.9" step="0.01"
           [value]="env?.sustain" vertical
           (valueChange)="setAsdr(env, $event || 0, 'sustain')">
         </mat-slider>
@@ -33,7 +33,7 @@
       <div class="adsr-grid__item">
         Release
         <mat-slider
-          min="0" max="1" step="0.01"
+          min="0.1" max="0.9" step="0.01"
           [value]="env?.release" vertical
           (valueChange)="setAsdr(env, $event || 0, 'release')">
         </mat-slider>

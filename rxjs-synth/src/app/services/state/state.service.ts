@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
-import { AmplitudeEnvelope, Distortion, Filter, LFO, OmniOscillator } from 'tone'
+import { AmplitudeEnvelope, ChorusOptions, Distortion, Filter, LFO, OmniOscillator } from 'tone'
 import { EnvelopeParams, FilterParams, LFOParams, SynthState } from './synth-state.interface'
 
 @Injectable({
@@ -11,12 +11,15 @@ export class StateService {
   private _ampEnvelope = new BehaviorSubject<EnvelopeParams>({
     attack: 0.1,
     decay: 0.2,
-    sustain: 1.0,
-    release: 0.8
+    sustain: 0.2,
+    release: 0.1
   })
   private _distortion = new BehaviorSubject<number>(0.8)
   private _lfo = new BehaviorSubject<LFOParams>({frequency: '4n', min: 400, max: 4000})
   private _filter = new BehaviorSubject<FilterParams>({frequency: 15000, type: 'lowpass'})
+  private _chorus = new BehaviorSubject<number>(0.01)
+  private _delay = new BehaviorSubject<number>(0.01)
+  private _reverb = new BehaviorSubject<number>(0.01)
 
   constructor() { }
 
@@ -40,6 +43,18 @@ export class StateService {
     return this._filter.asObservable()
   }
 
+  get chorus() {
+    return this._chorus.asObservable()
+  }
+
+  get delay() {
+    return this._delay.asObservable()
+  }
+
+  get reverb() {
+    return this._reverb.asObservable()
+  }
+
   setOscType(type: OscillatorType) {
     this._oscType.next(type)
   }
@@ -58,6 +73,18 @@ export class StateService {
 
   setFilter(filter: FilterParams) {
     return this._filter.next(filter)
+  }
+
+  setChorus(chorus: number) {
+    return this._chorus.next(chorus)
+  }
+
+  setDelay(delay: number) {
+    return this._delay.next(delay)
+  }
+
+  setReverb(reverb: number) {
+    return this._reverb.next(reverb)
   }
 
 }

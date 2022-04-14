@@ -1,9 +1,14 @@
+import { Chorus, ChorusOptions } from "tone"
+
 export interface SynthState {
   osc_type: OscillatorType
   amp_env: EnvelopeParams
   distortion: number
   lfo: LFOParams
   filter: FilterParams
+  chorus?: number
+  delay?: number
+  reverb?: number
 }
 
 export interface EnvelopeParams {

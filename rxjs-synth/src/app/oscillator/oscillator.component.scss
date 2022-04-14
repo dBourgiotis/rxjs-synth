@@ -1,0 +1,13 @@
+.oscillator-flex {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-right: .5rem;
+
+    &.active {
+      background: #69f0ae;
+      color: #303030;
+    }
+  }
+}
