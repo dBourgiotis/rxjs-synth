@@ -118,6 +118,6 @@
   },
   "defaultProject": "rxjs-synth",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "defaultCollection": "@ngrx/schematics"
   }
 }
