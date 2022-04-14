@@ -16,7 +16,7 @@ export class StateService {
   })
   private _distortion = new BehaviorSubject<number>(0.8)
   private _lfo = new BehaviorSubject<LFOParams>({frequency: '4n', min: 400, max: 4000})
-  private _filter = new BehaviorSubject<FilterParams>({frequency: 15000, type: 'highpass'})
+  private _filter = new BehaviorSubject<FilterParams>({frequency: 15000, type: 'lowpass'})
 
   constructor() { }
 

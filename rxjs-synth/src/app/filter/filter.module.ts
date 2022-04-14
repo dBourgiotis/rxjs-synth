@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FilterComponent } from './filter.component'
+import {MatSliderModule} from '@angular/material/slider'
 
 
 
@@ -12,7 +13,8 @@ import { FilterComponent } from './filter.component'
     FilterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatSliderModule,
   ]
 })
 export class FilterModule { }

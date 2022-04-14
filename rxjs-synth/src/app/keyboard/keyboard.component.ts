@@ -44,9 +44,9 @@ export class KeyboardComponent implements OnInit {
           envelope: state.amp_env
         }).toDestination()
         const dist = new Distortion(state.distortion).toDestination()
-        const filter = new Filter(state.filter.frequency).toDestination()
-        const lfo = new LFO(state.lfo.frequency, state.lfo.min, state.lfo.max).connect(filter.frequency)
-        lfo.start()
+        const filter = new Filter(state.filter.frequency, state.filter.type).toDestination()
+        // const lfo = new LFO(state.lfo.frequency, state.lfo.min, state.lfo.max).connect(filter.frequency)
+        // lfo.start()
         synth.connect(dist).connect(filter).triggerAttackRelease(`${note}${this.octave}`, "8n")
       }),
       first(),

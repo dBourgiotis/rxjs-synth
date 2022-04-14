@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LfoComponent } from './lfo.component';
+import { EffectsComponent } from './effects.component';
 import {MatSliderModule} from '@angular/material/slider'
-
 
 
 @NgModule({
   declarations: [
-    LfoComponent
+    EffectsComponent
   ],
   exports: [
-    LfoComponent
+    EffectsComponent
   ],
   imports: [
     CommonModule,
     MatSliderModule,
   ]
 })
-export class LfoModule { }
+export class EffectsModule { }

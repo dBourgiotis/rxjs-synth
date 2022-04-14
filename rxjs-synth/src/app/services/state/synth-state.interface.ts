@@ -21,5 +21,5 @@ export interface LFOParams {
 
 export interface FilterParams {
   frequency: number
-  type: string
+  type: BiquadFilterType
 }

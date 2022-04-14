@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OscillatorComponent } from './oscillator.component';
-import {MatChipsModule} from '@angular/material/chips'
+import {MatButtonModule} from '@angular/material/button'
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import {MatChipsModule} from '@angular/material/chips'
   ],
   imports: [
     CommonModule,
-    MatChipsModule
+    MatButtonModule
   ]
 })
 export class OscillatorModule { }

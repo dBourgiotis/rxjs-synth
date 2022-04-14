@@ -9,6 +9,7 @@ import { LfoModule } from './lfo/lfo.module'
 import { OscillatorModule } from './oscillator/oscillator.module';
 import { StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EffectsModule } from './effects/effects.module'
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LfoModule,
     OscillatorModule,
     BrowserAnimationsModule,
+    EffectsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

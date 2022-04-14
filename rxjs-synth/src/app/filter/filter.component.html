@@ -1,1 +1,24 @@
-<p>filter works!</p>
+<div class="synth-component">
+  <div class="synth-component__title">
+    Filter
+  </div>
+  <div class="synth-component__subtitle">
+    Set highpass filter frequency
+  </div>
+
+  <div class="synth-component__content">
+    <div class="filter-grid" *ngIf="filter$ | async as filter">
+      <div class="filter-grid__item">
+        Frequency
+        <mat-slider min="0" max="20000" step="1"
+          [value]="filter?.frequency"
+          (valueChange)="setFilter(filter, $event || 0)">
+        </mat-slider>
+        {{filter?.frequency | number}}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+

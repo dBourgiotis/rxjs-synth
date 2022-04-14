@@ -1,0 +1,23 @@
+<div class="synth-component">
+  <div class="synth-component__title">
+    Effects
+  </div>
+  <div class="synth-component__subtitle">
+    Mangling the wave
+  </div>
+
+  <div class="synth-component__content">
+    <div class="filter-grid" >
+      <div class="filter-grid__item" *ngIf="dist$ | async as dist">
+        Distortion
+        <mat-slider min="0.01" max="1" step="0.01"
+          [value]="dist"
+          (valueChange)="setDistortion($event || 0)">
+        </mat-slider>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
