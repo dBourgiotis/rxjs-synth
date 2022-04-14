@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/rxjs-synth",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
